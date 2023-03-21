@@ -75,20 +75,6 @@ p {
     margin-top: 0.5rem;
   }
   
-  .error-404 {
-    background-color: #ba5da1; 
-    width: 90%;
-    justify-content: center;
-    display: flex;
-    margin-top: auto;
-  }
-  
-   .error-404 .titulo {
-      font-size: 2.3em;
-      margin-top: 3rem;
-    }
-  
-
   ol li a {
     color: rgb(15, 15, 15) ;
     background-color: rgb(244, 179, 231);
@@ -183,6 +169,23 @@ p {
 .navbar-toggler{
     color: #ba5da1;    
 }
+
+
+/*page error 404*/
+
+.error-404 {
+    background-color: #ba5da1;
+    width: 90%;
+    justify-content: center;
+    display: flex;
+    margin-top: auto;
+}
+
+ .titulo {
+      font-size: 2.3em;
+      margin-top: 3em;
+    }
+  
 
 #img-carrito{
     display: flex;
@@ -298,14 +301,14 @@ p {
 }
 .sumar{
     cursor: pointer;
-    font-size: 26px;
+    font-size: 15px;
     font-weight:bold;
     text-align: center;
     position: relative;
 }
 .restar{
     cursor: pointer;
-    font-size: 26px;
+    font-size: 15px;
     font-weight:bold;
     text-align: center;
     position: relative;
@@ -529,5 +532,6 @@ p {
 
     }
 }
+
 
     
