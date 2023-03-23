@@ -23,13 +23,10 @@ disfraces.forEach((product) => {
     let comprar = document.createElement('button');
     comprar.innerText = "comprar";
     comprar.className = "comprar";
-
     content.append(comprar);
 
     comprar.addEventListener("click", () => {
-
         const repeat = carrito.some((repeatProduct) => repeatProduct.id === product.id);
-
         if (repeat === true) {
             carrito.map((prod) => {
                 if (prod.id === product.id) {

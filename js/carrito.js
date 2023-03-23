@@ -29,11 +29,13 @@ const pintarCarrito = () => {
     <p> cantidad: ${product.cantidad}</p>   
     <span class="sumar"> ➕ </span>
     <p>Total: $  ${product.cantidad * product.precio}</p>
+    <span class="delete-product"> ✖ </span>
+
     `;
         modalContainer.append(carritoContent);
 
+        // para restar productos
         let restar = carritoContent.querySelector('.restar');
-
         restar.addEventListener('click', () => {
             if (product.cantidad !== 1) {
                 product.cantidad--;
@@ -41,9 +43,8 @@ const pintarCarrito = () => {
             saveLocal();
             pintarCarrito();
         });
-
+        // para sumar productos
         let sumar = carritoContent.querySelector('.sumar');
-
         sumar.addEventListener('click', () => {
             product.cantidad++;
             saveLocal();
@@ -52,15 +53,12 @@ const pintarCarrito = () => {
 
         console.log(carrito.length);
 
-        let eliminar = document.createElement("span");
-        eliminar.innerText = "✖";
-        eliminar.className = "delete-product";
-        carritoContent.append(eliminar);
-
-        eliminar.addEventListener("click", eliminarProducto);
-
+        //para eliminar productos 
+        let eliminar = carritoContent.querySelector(".delete-product");
+        eliminar.addEventListener("click", () => {
+            eliminarProducto(product.id);
+        });
     });
-
 
     const total = carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0);
     const totalCompra = document.createElement("div");
@@ -70,11 +68,8 @@ const pintarCarrito = () => {
 }
 verCarrito.addEventListener("click", pintarCarrito);
 
-const eliminarProducto = () => {
-
-
+const eliminarProducto = (id) => {
     /*ejemplo para agregar boton de alerta con libreria sweetalert*/
-
     Swal.fire({
         title: 'Quieres eliminar los productos?',
         showDenyButton: true,
@@ -84,8 +79,7 @@ const eliminarProducto = () => {
     }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-            const foundId = carrito.find((element) => element.id);
-
+            const foundId = carrito.find((element) => element.id === id);
             carrito = carrito.filter((carritoId) => {
                 return carritoId !== foundId;
             });
